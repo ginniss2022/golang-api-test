@@ -1,6 +1,9 @@
 package main
 
 import (
+	"log"
+
+	"github.com/ginniss2022/internal/handlers"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -10,5 +13,6 @@ func main() {
 		return c.SendString("Hello World")
 	})
 
-	app.Listen(":8080")
+	app.Post("/api/products", handlers.CreateProduct)
+	log.Fatal(app.Listen(":3000"))
 }
